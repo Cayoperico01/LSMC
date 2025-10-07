@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Recrutement officiel – Los Santos Medical Center (LSMC)</title>
+    <meta name="description" content="Formulaire de recrutement officiel du Los Santos Medical Center (LSMC) – Thème médical RP GTA/FiveM." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="brand">
+          <img src="assets/logo.svg" alt="LSMC" class="logo" />
+          <div class="brand-text">
+            <h1>Recrutement officiel du LSMC</h1>
+            <p class="slogan">Sauvez des vies, vivez l’expérience médicale de Los Santos.</p>
+          </div>
+        </div>
+        <nav class="header-actions">
+          <a href="#candidature" class="btn btn-primary btn-glow">Postuler maintenant</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Banner configuration notice -->
+      <section id="config-notice" class="config-notice hidden">
+        <p>
+          Webhook Discord non configuré. Ajoutez votre URL dans <code>assets/config.js</code> pour activer l’envoi des candidatures.
+        </p>
+      </section>
+
+      <!-- Section 2 – Formulaire de candidature -->
+      <section id="candidature" class="card">
+        <h2>Formulaire de candidature</h2>
+        <p class="subtitle">Toutes les questions sont obligatoires. Les réponses doivent être rédigées manuellement (détection de texte IA activée).</p>
+
+        <form id="lsmc-form" novalidate>
+          <!-- Informations de base -->
+          <div class="form-group">
+            <h3>Informations de base</h3>
+            <label for="nom">Nom et prénom RP</label>
+            <input id="nom" name="nom" type="text" required placeholder="Ex: Alex Cortez" />
+
+            <label for="age">Âge RP</label>
+            <input id="age" name="age" type="number" min="16" max="90" required placeholder="Ex: 28" />
+
+            <label>Expérience médicale RP</label>
+            <div class="choices-inline">
+              <label class="choice"><input type="radio" name="exp_med" value="oui" required /> Oui</label>
+              <label class="choice"><input type="radio" name="exp_med" value="non" required /> Non</label>
+            </div>
+
+            <div id="exp-details" class="conditional hidden">
+              <label for="exp_poste">Si oui, précisez le poste</label>
+              <input id="exp_poste" name="exp_poste" type="text" placeholder="Ex: Infirmier, Interne, etc." />
+
+              <label for="exp_duree">Durée</label>
+              <input id="exp_duree" name="exp_duree" type="text" placeholder="Ex: 6 mois" />
+            </div>
+
+            <label for="poste">Poste souhaité</label>
+            <select id="poste" name="poste" required>
+              <option value="" disabled selected>Choisir un poste</option>
+              <option>Infirmier</option>
+              <option>Interne</option>
+              <option>Médecin</option>
+              <option>Chef d’unité</option>
+              <option>Secouriste</option>
+              <option>Paramedic</option>
+            </select>
+          </div>
+
+          <!-- Motivation -->
+          <div class="form-group">
+            <h3>Motivation</h3>
+            <label for="motivation_1">Pourquoi veux-tu rejoindre le LSMC ?</label>
+            <textarea id="motivation_1" name="motivation_1" required></textarea>
+
+            <label for="motivation_2">Qu’est-ce que tu peux apporter à notre équipe ?</label>
+            <textarea id="motivation_2" name="motivation_2" required></textarea>
+
+            <label for="motivation_3">Comment réagirais-tu face à un patient agressif ?</label>
+            <textarea id="motivation_3" name="motivation_3" required></textarea>
+
+            <label for="motivation_4">Comment réagirais-tu si un supérieur te donne un ordre avec lequel tu n’es pas d’accord ?</label>
+            <textarea id="motivation_4" name="motivation_4" required></textarea>
+          </div>
+
+          <!-- Connaissances médicales RP -->
+          <div class="form-group">
+            <h3>Connaissances médicales RP</h3>
+            <label for="med_1">Différence entre un arrêt cardiaque et un coma RP</label>
+            <textarea id="med_1" name="med_1" required></textarea>
+
+            <label for="med_2">Décris les étapes d’une intervention médicale RP (de l’arrivée à la facturation)</label>
+            <textarea id="med_2" name="med_2" required></textarea>
+
+            <label for="med_3">Que fais-tu si tu arrives sur une scène avec plusieurs blessés dont un critique ?</label>
+            <textarea id="med_3" name="med_3" required></textarea>
+
+            <label for="med_4">Comment gères-tu la communication radio pendant une urgence ?</label>
+            <textarea id="med_4" name="med_4" required></textarea>
+          </div>
+
+          <!-- Règlement & discipline -->
+          <div class="form-group">
+            <h3>Règlement & discipline</h3>
+            <label for="reg_1">Cite quelques règles du LSMC (hiérarchie, comportement, facturation)</label>
+            <textarea id="reg_1" name="reg_1" required></textarea>
+
+            <label for="reg_2">Que ferais-tu si un collègue oublie volontairement de facturer un soin ?</label>
+            <textarea id="reg_2" name="reg_2" required></textarea>
+
+            <label for="reg_3">Comment rends-tu un RP médical réaliste et immersif sans le rendre trop long ?</label>
+            <textarea id="reg_3" name="reg_3" required></textarea>
+          </div>
+
+          <!-- Disponibilités -->
+          <div class="form-group">
+            <h3>Disponibilités</h3>
+            <label for="disp_1">Jours et heures disponibles RP</label>
+            <input id="disp_1" name="disp_1" type="text" required placeholder="Ex: Lun-Ven, 19h-23h" />
+
+            <label>Disponible pour gardes de nuit ?</label>
+            <div class="choices-inline">
+              <label class="choice"><input type="radio" name="nuit" value="oui" required /> Oui</label>
+              <label class="choice"><input type="radio" name="nuit" value="non" required /> Non</label>
+            </div>
+
+            <label>Prêt à suivre une formation complète ?</label>
+            <div class="choices-inline">
+              <label class="choice"><input type="radio" name="formation" value="oui" required /> Oui</label>
+              <label class="choice"><input type="radio" name="formation" value="non" required /> Non</label>
+            </div>
+          </div>
+
+          <!-- Section 3 – Informations internes (admin) -->
+          <div class="form-group alt card-alt">
+            <h3>Informations internes (admin)</h3>
+            <div class="rules">
+              <p><strong>Règles de facturation :</strong></p>
+              <ul>
+                <li>Déplacement ≤ 6 km : 1 facture (200$)</li>
+                <li>Déplacement > 6 km : 2 factures (400$)</li>
+                <li>Coma : 1 facture (200$)</li>
+                <li>Soins après coma : 1 facture (200$)</li>
+                <li>Hélicoptère : 2 factures max (400$)</li>
+                <li>Sanctions en cas de fraude ou falsification.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Section 4 – Validation -->
+          <div class="form-group">
+            <h3>Validation</h3>
+            <label class="checkbox">
+              <input type="checkbox" id="certif" name="certif" required />
+              Je certifie que mes réponses sont exactes et que j’ai pris connaissance du règlement du LSMC.
+            </label>
+
+            <div class="choices-inline">
+              <label class="choice">
+                <input type="checkbox" id="auto_confirm" name="auto_confirm" />
+                Envoyer un message de confirmation Discord (optionnel)
+              </label>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-glow" id="submit-btn">Envoyer ma candidature</button>
+            <button type="button" class="btn btn-secondary" id="export-csv-btn">Exporter les réponses (CSV)</button>
+          </div>
+          <div id="ai-warning" class="ai-warning hidden">
+            <h4>Suspicion de texte IA détecté</h4>
+            <p>Veuillez reformuler les réponses indiquées ci-dessous avant d’envoyer :</p>
+            <ul id="ai-warning-list"></ul>
+          </div>
+        </form>
+      </section>
+
+      <!-- Option bonus – Notre équipe -->
+      <section id="team" class="card">
+        <h2>Notre équipe</h2>
+        <p class="subtitle">Professionnels dédiés au service de Los Santos.</p>
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="avatar">🩺</div>
+            <div class="team-info">
+              <h4>Camila Garcia</h4>
+              <p>Directrice</p>
+            </div>
+          </div>
+          <div class="team-card">
+            <div class="avatar">🚑</div>
+            <div class="team-info">
+              <h4>Tiziano Garcia</h4>
+              <p>Directeur Adjoint</p>
+            </div>
+          </div>
+          <div class="team-card">
+            <div class="avatar">💉</div>
+            <div class="team-info">
+              <h4>Chloé Bishop</h4>
+              <p>Chef de services</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Option bonus – FAQ recrutement -->
+      <section id="faq" class="card">
+        <h2>FAQ recrutement</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <h4>Quel âge faut-il avoir RP ?</h4>
+            <p>Nous recommandons un âge RP d’au moins 18 ans pour une cohérence avec les responsabilités médicales.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Puis-je rejoindre sans expérience ?</h4>
+            <p>Oui. Une formation complète est proposée pour intégrer le LSMC dans de bonnes conditions.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Combien de temps prend l’examen de candidature ?</h4>
+            <p>Les RH vous contacteront en jeu ou sur Discord sous peu, généralement sous 48h.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Confirmation toast -->
+    <div id="toast" class="toast hidden">
+      <p>Merci ! Votre candidature a été transmise à notre service RH. Vous serez contacté en jeu ou sur Discord sous peu.</p>
+    </div>
+
+    <footer class="site-footer">
+      <p>Los Santos Medical Center • RP GTA/FiveM • © LSMC</p>
+    </footer>
+
+    <script src="assets/config.js"></script>
+    <script src="assets/app.js"></script>
+  </body>
+  </html>
